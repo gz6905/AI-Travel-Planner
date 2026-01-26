@@ -3,14 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Button } from "@/components/ui/button";
 import "./App.css";
+import Hero from "./components/custom/Hero";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h2>Welcome!</h2>
-      <Button>Hello!</Button>
+      {/* Hero  */}
+      <Hero />
     </>
   );
 }

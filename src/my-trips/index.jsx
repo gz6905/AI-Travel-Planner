@@ -23,12 +23,14 @@ function MyTrips() {
       where("userEmail", "==", JSON.parse(user).email),
     );
 
-    setUserTrips([]);
     const querySnapshot = await getDocs(q);
+    const trips = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      setUserTrips((prevVal) => [...prevVal, doc.data()]);
+      trips.push(doc.data());
     });
+    // Sort by most recent first and limit to 30 trips
+    trips.sort((a, b) => b.id - a.id);
+    setUserTrips(trips.slice(0, 30));
   };
   return (
     <div className="p-10 md:px-20 lg:px-36 xl:px-72 px-5 mt-10">
